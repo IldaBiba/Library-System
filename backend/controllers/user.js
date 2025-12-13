@@ -13,7 +13,7 @@ const UserController = {
             name: name,
             email: email,
             password: hashedPassword,
-            role: 'user'
+            role: 'admin'
         };
 
         try {
@@ -70,6 +70,9 @@ const UserController = {
       res.status(500).json({ message: "Server error", error: err });
     }
   },
+
+
+  
 }
 
 module.exports = UserController;

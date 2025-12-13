@@ -22,7 +22,12 @@ const Login = () => {
       });
 
       login(res.data.user, res.data.token);
-      navigate("/");
+      if (res.data.user.role === "admin") {
+  navigate("/admin");
+} else {
+  navigate("/");
+}
+      
     } catch (err) {
       console.error(err.response?.data?.message || err.message);
       alert(err.response?.data?.message || "Login failed");

@@ -4,10 +4,12 @@ const app = express();
 app.use(express.json());
 const userRoutes = require('./routes/user');
 const bookRoutes = require('./routes/book')
+const adminRoutes = require("./routes/admin")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const PORT = 3001;
-const cors = require ("cors")
+const cors = require ("cors");
+const AdminController = require("./controllers/admin");
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -29,6 +31,7 @@ app.use(cors());
 
 app.use("/users", userRoutes);
 app.use("/books", bookRoutes)
+app.use("/admin",adminRoutes)
 
 
 

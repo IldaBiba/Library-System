@@ -6,6 +6,9 @@ import Home from "./Home";
 import Register from "./views/user/Register/Register";
 import CreateBook from "./views/book/Create/CreateBook";
 import UpdateBook from "./views/book/Update/UpdateBook";
+import Dashboard from "./views/admin/Dashboard";
+import UpdateUser from "./components/admin/Users/UpdateUser";
+import CreateUser from "./components/admin/Users/CreateUser";
 
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
             <Route path="/register" element={<Register />} />
              <Route path="/create-book" element={<CreateBook />} />
              <Route path="/update-book/:id" element={<UpdateBook />} />
+             <Route path="/admin" element={<Dashboard />} />
+             <Route path="/admin/update-user/:id" element={<UpdateUser />} />
+              <Route path="/admin/create-user" element={<CreateUser />} />
            </Route>
         </Routes>
       </BrowserRouter>

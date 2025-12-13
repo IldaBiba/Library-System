@@ -4,10 +4,14 @@ const BookController = {
   createBook: (req, res) => {
     const { title, author, genre, reading_status } = req.body;
     const user_id = req.user.id; 
+  
 
     const newBook = { title, author, genre, reading_status, user_id };
 
+    console.log(newBook)
+
     Book.create(newBook, (err, createdBook) => {
+      console.log(createdBook)
       if (err) return res.status(500).json({ message: 'Error creating book', error: err });
       res.status(201).json({ message: 'Book created successfully', book: createdBook });
     });

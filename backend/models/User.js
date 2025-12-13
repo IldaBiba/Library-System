@@ -23,6 +23,20 @@ const User = {
     db.all(sql, [], (err, rows) => callback(err, rows));
   },
 
+  update: (id, user, callback) => {
+  const { name, email, role } = user;
+
+  const sql = `
+    UPDATE users
+    SET name = ?, email = ?, role = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `;
+
+  db.run(sql, [name, email, role, id], function (err) {
+    callback(err, this.changes);
+  });
+},
+
   delete: (id, callback) => {
     const sql = `DELETE FROM users WHERE id = ?`;
     db.run(sql, [id], function(err) {

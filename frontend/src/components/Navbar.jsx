@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  console.log (user)
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,11 +12,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          📚 My Library
-        </Link>
+        <Link
+  className="navbar-brand"
+  to={user?.role === "admin" ? "/admin" : "/"}
+>
+  📚 My Library
+</Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -29,25 +32,28 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-center">
             {user ? (
               <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/books">
-                    My Books
-                  </Link>
-                </li>
+                {user.role !== "admin" && (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/">
+                      My Books
+                    </Link>
+                  </li>
+                )}
                 {user.role === "admin" && (
                   <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
-                      Admin
-                    </Link>
+                    <span className="badge bg-warning text-dark px-3 py-2 me-3">
+                      ADMIN
+                    </span>
                   </li>
                 )}
                 <li className="nav-item">
                   <button
-                    className="btn btn-outline-danger ms-2"
+                    className="btn btn-outline-danger btn-sm"
                     onClick={handleLogout}
                   >
                     Logout

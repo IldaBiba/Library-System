@@ -24,7 +24,12 @@ const Register = () => {
       });
 
       login(res.data.user, res.data.token);
-      navigate("/books");
+
+      if (res.data.user.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     } catch (err) {
       console.error(err.response?.data?.message || err.message);
       alert(err.response?.data?.message || "Registration failed");
