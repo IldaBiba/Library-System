@@ -9,6 +9,7 @@ import UpdateBook from "./views/book/Update/UpdateBook";
 import Dashboard from "./views/admin/Dashboard";
 import UpdateUser from "./components/admin/Users/UpdateUser";
 import CreateUser from "./components/admin/Users/CreateUser";
+import AdminUserBooks from "./components/admin/Books/AdminUserBooks";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
              <Route path="/admin" element={<Dashboard />} />
              <Route path="/admin/update-user/:id" element={<UpdateUser />} />
               <Route path="/admin/create-user" element={<CreateUser />} />
+              <Route path="/admin/user-books/:id" element={<AdminUserBooks />} />
            </Route>
         </Routes>
       </BrowserRouter>

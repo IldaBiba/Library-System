@@ -135,6 +135,27 @@ const AdminController = {
   });
 },
 
+ getUserBooks : (req, res) => {
+  try {
+    const { id } = req.params; 
+
+    Book.getAllByUser(id, (err, books) => {
+      if (err) {
+        console.error("SQLITE ERROR:", err.message);
+        return res
+          .status(500)
+          .json({ message: "Failed to fetch user books", error: err });
+      }
+
+      
+      res.status(200).json({ books });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err });
+  }
+},
+
 
 
 };

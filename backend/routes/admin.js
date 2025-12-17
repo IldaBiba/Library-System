@@ -17,5 +17,6 @@ router.put(
   AdminController.updateUser
 );
 router.get('/get-user/:id',authenticate, authorizeAdmin, AdminController.getUser);
+router.get('/user-books/:id',authenticate, authorizeAdmin, AdminController.getUserBooks);
 
 module.exports = router;

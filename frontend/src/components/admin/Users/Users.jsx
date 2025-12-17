@@ -70,21 +70,28 @@ const AdminUsers = () => {
                     <td>{user.email}</td>
                     <td>{new Date(user.created_at).toLocaleDateString()}</td>
                     <td>
-                      <button
-                        className="btn btn-sm btn-warning me-2"
-                        onClick={() =>
-                          navigate(`/admin/update-user/${user.id}`)
-                        }
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="btn btn-sm btn-danger"
-                        onClick={() => handleDelete(user.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
+  <button
+    className="btn btn-sm btn-info me-2"
+    onClick={() => navigate(`/admin/user-books/${user.id}`)}
+  >
+    Books
+  </button>
+
+  <button
+    className="btn btn-sm btn-warning me-2"
+    onClick={() => navigate(`/admin/update-user/${user.id}`)}
+  >
+    Edit
+  </button>
+
+  <button
+    className="btn btn-sm btn-danger"
+    onClick={() => handleDelete(user.id)}
+  >
+    Delete
+  </button>
+</td>
+
                   </tr>
                 ))
               ) : (
