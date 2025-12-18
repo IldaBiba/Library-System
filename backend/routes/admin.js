@@ -18,5 +18,6 @@ router.put(
 );
 router.get('/get-user/:id',authenticate, authorizeAdmin, AdminController.getUser);
 router.get('/user-books/:id',authenticate, authorizeAdmin, AdminController.getUserBooks);
+router.post("/ai-query", authenticate, authorizeAdmin, AdminController.aiQuery);
 
 module.exports = router;
